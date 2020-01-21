@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Nav from './components/Nav';
 import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
+import Snackbar from '@material-ui/core/Snackbar';
+import Button from '@material-ui/core/Button';
 import './App.css';
 
 class App extends Component {
@@ -10,7 +12,8 @@ class App extends Component {
         this.state = {
             displayed_form: '',
             logged_in: localStorage.getItem('token') ? true : false,
-            username: ''
+            username: '',
+            open: false
         };
     }
 
@@ -47,7 +50,7 @@ class App extends Component {
                         username: json.user.username
                     });
                 } else {
-                    alert('No existe un usuario con esa informacion')
+                    this.setState({ open: true  });
                 }
             });
     };
@@ -83,6 +86,16 @@ class App extends Component {
         });
     };
 
+
+    handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+          return;
+        }
+
+        this.setState({ open: false  });
+    };
+
+
     render() {
         let form;
         switch (this.state.displayed_form) {
@@ -98,6 +111,24 @@ class App extends Component {
 
         return (
             <div className="App">
+                 <Snackbar
+                    anchorOrigin={{
+                      vertical: 'top',
+                      horizontal: 'right',
+                    }}
+                    open={this.state.open}
+                    autoHideDuration={3000}
+                    onClose={this.handleClose}
+                    message="Usuario y/o contraseña incorrectos"
+                    action={
+                      <React.Fragment>
+                        <Button color="secondary" size="small" onClick={this.handleClose}>
+                          OK
+                        </Button>
+                      </React.Fragment>
+                    }
+                  />
+
                 <Nav
                     logged_in={this.state.logged_in}
                     display_form={this.display_form}
