@@ -45,7 +45,12 @@ INSTALLED_APPS = [
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
-    ]
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ),
 }
 
 MIDDLEWARE = [
@@ -65,6 +70,10 @@ CORS_ORIGIN_WHITELIST = (
     'http://localhost:8000',
     'http://localhost:8080',
 )
+
+JWT_AUTH = {
+    'JWT_RESPONSE_PAYLOAD_HANDLER': 'aloe_api.utils.my_jwt_response_handler'
+}
 
 ROOT_URLCONF = 'aloe_api.urls'
 
