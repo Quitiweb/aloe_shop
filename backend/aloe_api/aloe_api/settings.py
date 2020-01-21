@@ -72,7 +72,7 @@ CORS_ORIGIN_WHITELIST = (
 )
 
 JWT_AUTH = {
-    'JWT_RESPONSE_PAYLOAD_HANDLER': 'aloe_api.utils.my_jwt_response_handler'
+    'JWT_RESPONSE_PAYLOAD_HANDLER': 'aloe_shop.utils.my_jwt_response_handler'
 }
 
 ROOT_URLCONF = 'aloe_api.urls'
