@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Drawer from '@material-ui/core/Drawer';
@@ -13,7 +12,6 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import MailIcon from '@material-ui/icons/Mail';
 import EcoIcon from '@material-ui/icons/Eco';
 import MoodIcon from '@material-ui/icons/Mood';
 import AccessibilityNewIcon from '@material-ui/icons/AccessibilityNew';
@@ -21,6 +19,8 @@ import FaceIcon from '@material-ui/icons/Face';
 import PersonIcon from '@material-ui/icons/Person';
 import MoneyOffIcon from '@material-ui/icons/MoneyOff';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
+import {Link} from 'react-router-dom'
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles(theme => ({
       root: {
@@ -116,7 +116,12 @@ export default function TopBar() {
             <Typography variant="h6" className={classes.title}>
               aloe shop
             </Typography>
-            <Button color="inherit" className={classes.button}>Login</Button>
+
+
+            <Link to="/login">
+                <span>Login</span>
+            </Link>
+
           </Toolbar>
         </AppBar>
 
