@@ -5,6 +5,7 @@ import SignupForm from './components/SignupForm';
 import Snackbar from '@material-ui/core/Snackbar';
 import Button from '@material-ui/core/Button';
 import './App.css';
+import TopBar from "./components/AppBar";
 
 class App extends Component {
     constructor(props) {
@@ -111,6 +112,7 @@ class App extends Component {
 
         return (
             <div className="App">
+                <TopBar/>
                  <Snackbar
                     anchorOrigin={{
                       vertical: 'top',
@@ -128,7 +130,6 @@ class App extends Component {
                       </React.Fragment>
                     }
                   />
-
                 <Nav
                     logged_in={this.state.logged_in}
                     display_form={this.display_form}
