@@ -4,12 +4,20 @@ import LoginForm from '../components/LoginForm';
 import SignupForm from '../components/SignupForm';
 import Snackbar from '@material-ui/core/Snackbar';
 import Button from '@material-ui/core/Button';
+import {makeStyles} from "@material-ui/core/styles";
+
+
+const useStyles = makeStyles(theme => ({
+MuiSnackbar: {
+    marginTop: '15px'
+}
+}));
 
 export default class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            displayed_form: '',
+            displayed_form: 'login',
             logged_in: localStorage.getItem('token') ? true : false,
             username: '',
             open: false
@@ -125,16 +133,19 @@ export default class Login extends React.Component {
                       </React.Fragment>
                     }
                   />
+
+                {form}
+
                 <Nav
                     logged_in={this.state.logged_in}
                     display_form={this.display_form}
                     handle_logout={this.handle_logout}
                 />
-                {form}
+
                 <h3>
                     {this.state.logged_in
                         ? `Hello, ${this.state.username}`
-                        : 'Please Log In'}
+                        : ''}
                 </h3>
             </div>
         )

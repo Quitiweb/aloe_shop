@@ -20,30 +20,43 @@ import PersonIcon from '@material-ui/icons/Person';
 import MoneyOffIcon from '@material-ui/icons/MoneyOff';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import {Link} from 'react-router-dom'
-import Button from "@material-ui/core/Button";
+import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 
 const useStyles = makeStyles(theme => ({
-      root: {
+    root: {
         flexGrow: 1,
-      },
-      menuButton: {
+    },
+    menuButton: {
         marginRight: theme.spacing(2),
-      },
-      title: {
+    },
+    title: {
         flexGrow: 1,
-      },
-      topbar: {
-          backgroundColor: '#1E361E'
-      },
-      list: {
+        marginRight: '-50px'
+    },
+    topbar: {
+        backgroundColor: '#1E361E'
+    },
+    list: {
         width: 250,
-      },
-      fullList: {
+    },
+    fullList: {
         width: 'auto',
-      },
+    },
+    enlaceMain: {
+        textDecoration: 'none',
+        color: 'white',
+        fontFamily: 'Roboto Condensed',
+        fontSize: '28px',
+        fontWeight: 'bold'
+    },
+    enlace: {
+        textDecoration: 'none',
+        color: 'white',
+        fontFamily: 'Roboto Condensed',
+    }
     }));
 
-export default function TopBar() {
+export default function TopBar(props) {
 
       const [state, setState] = React.useState({
           left: false,
@@ -98,8 +111,10 @@ export default function TopBar() {
             <ListItemIcon><MoneyOffIcon/></ListItemIcon>
             <ListItemText primary={'Ofertas/Promociones'} />
         </ListItem>
-
-
+        <ListItem button key={'Blog'}>
+            <ListItemIcon><LibraryBooksIcon/></ListItemIcon>
+            <ListItemText primary={'Blog'} />
+        </ListItem>
       </List>
     </div>
   );
@@ -109,20 +124,19 @@ export default function TopBar() {
     return (
         <div>
             <AppBar position="static" className={classes.topbar}>
-          <Toolbar>
-            <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={toggleDrawer('left', true)}>
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="h6" className={classes.title}>
-              aloe shop
-            </Typography>
-
-
-            <Link to="/login">
-                <span>Login</span>
-            </Link>
-
-          </Toolbar>
+                <Toolbar>
+                    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={toggleDrawer('left', true)}>
+                        <MenuIcon />
+                    </IconButton>
+                    <Typography variant="h6" className={classes.title}>
+                        <Link to="/" className={classes.enlaceMain}>
+                        <span>ALOESHOP</span>
+                    </Link>
+                    </Typography>
+                    <Link to="/login" className={classes.enlace}>
+                        <span>{props.login ? 'Sign Out' : 'Login / Sign Up'}</span>
+                    </Link>
+              </Toolbar>
         </AppBar>
 
         <Drawer open={state.left} onClose={toggleDrawer('left', false)}>
