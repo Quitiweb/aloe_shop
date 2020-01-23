@@ -87,7 +87,8 @@ export default class Login extends React.Component {
     handle_logout = () => {
         localStorage.removeItem('token');
         this.props.setLoginToken(false);
-        this.setState({ logged_in: false, username: '' });
+        this.props.setUsername('');
+        this.setState({ logged_in: false });
     };
 
     display_form = form => {

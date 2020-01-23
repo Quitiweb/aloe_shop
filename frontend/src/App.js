@@ -23,11 +23,17 @@ class App extends Component {
         this.setState({ login });
     };
 
+    logout = () => {
+        localStorage.removeItem('token');
+        this.setLoginToken(false);
+        this.setUsername('');
+    };
+
     render() {
         return (
             <div className="App">
                 <BrowserRouter>
-                    <TopBar login={this.state.login}/>
+                    <TopBar login={this.state.login} logout={this.logout}/>
                     <Switch>
                         <Route exact path='/' component={HomePage}/>
                         <Route path='/login' render={(props) => <Login {...props}

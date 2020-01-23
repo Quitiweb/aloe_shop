@@ -31,6 +31,10 @@ const useStyles = makeStyles(theme => ({
     },
     title: {
         flexGrow: 1,
+        marginRight: 0
+    },
+    title50: {
+        flexGrow: 1,
         marginRight: '-50px'
     },
     topbar: {
@@ -128,14 +132,21 @@ export default function TopBar(props) {
                     <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={toggleDrawer('left', true)}>
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" className={classes.title}>
+                    <Typography variant="h6" className={props.login ? classes.title : classes.title50}>
                         <Link to="/" className={classes.enlaceMain}>
                         <span>ALOESHOP</span>
                     </Link>
                     </Typography>
-                    <Link to="/login" className={classes.enlace}>
-                        <span>{props.login ? 'Sign Out' : 'Login / Sign Up'}</span>
+                    {props.login ?
+
+                        <Link to={'/'} onClick={props.logout} className={classes.enlace}>
+                            <span>Logout</span>
+                        </Link>
+                    :
+                     <Link to="/login" className={classes.enlace}>
+                        <span>Login / Sign Up</span>
                     </Link>
+                    }
               </Toolbar>
         </AppBar>
 
