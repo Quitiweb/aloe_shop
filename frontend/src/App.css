@@ -48,4 +48,8 @@
  .MuiSnackbar-anchorOriginTopRight {
     top: 63px !important;
   }
+
+.MuiToolbar-regular {
+    min-height: 64px !important;
+}
 }

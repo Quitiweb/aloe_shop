@@ -68,7 +68,7 @@ class SignupForm extends React.Component {
 
             <Grid item xs={12}>
               <Button type="submit" variant="contained" color="primary" size={'large'}>
-              Login
+              Signup
             </Button>
             </Grid>
           </Grid>

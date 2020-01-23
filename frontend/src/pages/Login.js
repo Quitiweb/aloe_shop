@@ -1,5 +1,4 @@
 import React from 'react';
-import Nav from '../components/Nav';
 import LoginForm from '../components/LoginForm';
 import SignupForm from '../components/SignupForm';
 import Snackbar from '@material-ui/core/Snackbar';
@@ -67,7 +66,10 @@ export default class Login extends React.Component {
 
     handle_signup = (e, data) => {
         e.preventDefault();
-        if(data.password2 !== data.password) {
+        console.log(data);
+        if (data.username === '' || data.password === '' || data.password2 === '') {
+            this.setState({ open: true, alertMsg: 'Por favor, completa todos los campos.'  });
+        } else if(data.password2 !== data.password) {
             this.setState({ open: true, alertMsg: 'Las contraseñas no coinciden.'  });
         }
         else {
@@ -150,12 +152,6 @@ export default class Login extends React.Component {
                   />
 
                 {form}
-
-                <Nav
-                    logged_in={this.state.logged_in}
-                    display_form={this.display_form}
-                    handle_logout={this.handle_logout}
-                />
 
                 <h3>
                     {this.state.logged_in

@@ -38,7 +38,8 @@ const useStyles = makeStyles(theme => ({
         marginRight: '-50px'
     },
     topbar: {
-        backgroundColor: '#1E361E'
+        backgroundColor: '#1E361E',
+        zIndex: '11'
     },
     list: {
         width: 250,
@@ -127,7 +128,7 @@ export default function TopBar(props) {
 
     return (
         <div>
-            <AppBar position="static" className={classes.topbar}>
+            <AppBar position="static" className={classes.topbar} style={{position:"fixed"}}>
                 <Toolbar>
                     <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={toggleDrawer('left', true)}>
                         <MenuIcon />

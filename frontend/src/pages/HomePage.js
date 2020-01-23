@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import Banner from '../components/HomePage/Banner'
+import Grid from "@material-ui/core/Grid";
+import ButtonBase from "@material-ui/core/ButtonBase";
+import Lineas from "../components/HomePage/Lineas";
 
 export default function HomePage() {
 
@@ -20,12 +24,18 @@ const [ejemplos, setEjemplos] = useState([]);
 
   return (
       <div>
-        {ejemplos.map(item => (
-          <div key={item.id}>
+
+        <Banner/>
+
+        <Lineas/>
+      <Grid container style={{position: 'absolute', marginBottom: '80px'}}>
+            {ejemplos.map(item => (
+          <Grid item xs={12} key={item.id} style={{position: 'relative', top: '20px'}}>
             <h1>{item.titulo}</h1>
             <span>{item.descripcion}</span>
-          </div>
+          </Grid>
         ))}
+      </Grid>
       </div>
   );
 }
