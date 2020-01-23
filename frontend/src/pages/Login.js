@@ -20,7 +20,8 @@ export default class Login extends React.Component {
             displayed_form: 'login',
             logged_in: localStorage.getItem('token') ? true : false,
             username: '',
-            open: false
+            open: false,
+            openPass: false
         };
     }
 
@@ -65,23 +66,27 @@ export default class Login extends React.Component {
 
     handle_signup = (e, data) => {
         e.preventDefault();
-        fetch('http://localhost:8000/api/users/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-            .then(res => res.json())
-            .then(json => {
-                localStorage.setItem('token', json.token);
-                this.setState({
-                    logged_in: true,
-                    displayed_form: ''
+        if(data.password2 !== data.password) {
+            this.setState({ openPass: true  });
+        } else {
+            fetch('http://localhost:8000/api/users/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(res => res.json())
+                .then(json => {
+                    localStorage.setItem('token', json.token);
+                    this.setState({
+                        logged_in: true,
+                        displayed_form: ''
+                    });
+                    this.props.setUsername(json.username);
+                    this.props.setLoginToken(json.token);
                 });
-                this.props.setUsername(json.username);
-                this.props.setLoginToken(json.token);
-            });
+        }
     };
 
     handle_logout = () => {
@@ -102,7 +107,7 @@ export default class Login extends React.Component {
           return;
         }
 
-        this.setState({ open: false  });
+        this.setState({ open: false, openPass: false  });
     };
 
     render() {
@@ -129,6 +134,24 @@ export default class Login extends React.Component {
                     autoHideDuration={3000}
                     onClose={this.handleClose}
                     message="Usuario y/o contraseña incorrectos"
+                    action={
+                      <React.Fragment>
+                        <Button color="secondary" size="small" onClick={this.handleClose}>
+                          OK
+                        </Button>
+                      </React.Fragment>
+                    }
+                  />
+
+                  <Snackbar
+                    anchorOrigin={{
+                      vertical: 'top',
+                      horizontal: 'right',
+                    }}
+                    open={this.state.openPass}
+                    autoHideDuration={3000}
+                    onClose={this.handleClose}
+                    message="Las contraseñas no coinciden"
                     action={
                       <React.Fragment>
                         <Button color="secondary" size="small" onClick={this.handleClose}>

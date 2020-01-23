@@ -4,6 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import {Grid} from "@material-ui/core";
 import Link from "@material-ui/core/Link";
+import Typography from "@material-ui/core/Typography";
 
 class LoginForm extends React.Component {
   state = {
@@ -25,6 +26,13 @@ class LoginForm extends React.Component {
     return (
         <form onSubmit={e => this.props.handle_login(e, this.state)}  style={{ marginTop: '50px' }} >
           <Grid container spacing={2} item xs={12}>
+
+            <Grid item xs={12}>
+              <Typography variant="h4">
+                <span>Login</span>
+            </Typography>
+            </Grid>
+
             <Grid item xs={12}>
             <TextField
                 autoComplete={'off'}
@@ -54,7 +62,7 @@ class LoginForm extends React.Component {
           </Grid>
             <Grid container>
         <Grid item xs={12} style={{marginTop: '25px'}}>
-          <Link onClick={() => this.props.display_form('signup')} style={{marginRight: '15px', cursor: 'pointer'}}>¿No tienes cuenta? Registrate gratis</Link>
+          <Link onClick={() => this.props.display_form('signup')} style={{marginRight: '15px', cursor: 'pointer'}}>¿No tienes cuenta? Regístrate gratis</Link>
         </Grid>
       </Grid>
 
