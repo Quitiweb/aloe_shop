@@ -21,7 +21,7 @@ export default class Login extends React.Component {
             logged_in: localStorage.getItem('token') ? true : false,
             username: '',
             open: false,
-            openPass: false
+            alertMsg: ''
         };
     }
 
@@ -58,8 +58,9 @@ export default class Login extends React.Component {
                     });
                     this.props.setUsername(json.user.username);
                     this.props.setLoginToken(json.token);
+                    window.location.replace("/");
                 } else {
-                    this.setState({ open: true  });
+                    this.setState({ open: true, alertMsg: 'Usuario y/o contraseña incorrectos.'  });
                 }
             });
     };
@@ -67,8 +68,9 @@ export default class Login extends React.Component {
     handle_signup = (e, data) => {
         e.preventDefault();
         if(data.password2 !== data.password) {
-            this.setState({ openPass: true  });
-        } else {
+            this.setState({ open: true, alertMsg: 'Las contraseñas no coinciden.'  });
+        }
+        else {
             fetch('http://localhost:8000/api/users/', {
                 method: 'POST',
                 headers: {
@@ -78,13 +80,17 @@ export default class Login extends React.Component {
             })
                 .then(res => res.json())
                 .then(json => {
-                    localStorage.setItem('token', json.token);
-                    this.setState({
-                        logged_in: true,
-                        displayed_form: ''
-                    });
-                    this.props.setUsername(json.username);
-                    this.props.setLoginToken(json.token);
+                    if(json.token) {
+                        localStorage.setItem('token', json.token);
+                        this.setState({
+                            logged_in: true,
+                            displayed_form: ''
+                        });
+                        this.props.setUsername(json.username);
+                        this.props.setLoginToken(json.token);
+                    } else {
+                        this.setState({ open: true, alertMsg: 'Ya existe un usuario con ese nombre.'  });
+                    }
                 });
         }
     };
@@ -107,7 +113,7 @@ export default class Login extends React.Component {
           return;
         }
 
-        this.setState({ open: false, openPass: false  });
+        this.setState({ open: false });
     };
 
     render() {
@@ -133,25 +139,7 @@ export default class Login extends React.Component {
                     open={this.state.open}
                     autoHideDuration={3000}
                     onClose={this.handleClose}
-                    message="Usuario y/o contraseña incorrectos"
-                    action={
-                      <React.Fragment>
-                        <Button color="secondary" size="small" onClick={this.handleClose}>
-                          OK
-                        </Button>
-                      </React.Fragment>
-                    }
-                  />
-
-                  <Snackbar
-                    anchorOrigin={{
-                      vertical: 'top',
-                      horizontal: 'right',
-                    }}
-                    open={this.state.openPass}
-                    autoHideDuration={3000}
-                    onClose={this.handleClose}
-                    message="Las contraseñas no coinciden"
+                    message={this.state.alertMsg}
                     action={
                       <React.Fragment>
                         <Button color="secondary" size="small" onClick={this.handleClose}>
@@ -171,7 +159,7 @@ export default class Login extends React.Component {
 
                 <h3>
                     {this.state.logged_in
-                        ? `Hello, ${this.props.username}`
+                        ? `Has iniciado sesión como ${this.props.username}`
                         : ''}
                 </h3>
             </div>

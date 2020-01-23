@@ -15,7 +15,7 @@ function Nav(props) {
   );
 
   const logged_in_nav = (
-      <RTLink to="/" onClick={props.handle_logout}>logout</RTLink>
+      <RTLink to="/" onClick={props.handle_logout}></RTLink>
   );
   return <div>{props.logged_in ? logged_in_nav : logged_out_nav}</div>;
 }

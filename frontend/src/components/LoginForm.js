@@ -55,9 +55,11 @@ class LoginForm extends React.Component {
             />
             </Grid>
             <Grid item xs={12}>
-              <Button type="submit" variant="contained" color="primary" size={'large'}>
+          <Link>
+                <Button type="submit" variant="contained" color="primary" size={'large'}>
               Login
             </Button>
+          </Link>
             </Grid>
           </Grid>
             <Grid container>
