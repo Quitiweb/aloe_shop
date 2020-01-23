@@ -9,7 +9,7 @@ function Nav(props) {
   const logged_out_nav = (
       <Grid container>
         <Grid item xs={12} style={{marginTop: '25px'}}>
-          <Link onClick={() => props.display_form('signup')} style={{marginRight: '15px', cursor: 'pointer'}}>¿No tienes cuenta? Registrate gratis</Link>
+          {/*<Link onClick={() => props.display_form('signup')} style={{marginRight: '15px', cursor: 'pointer'}}>¿No tienes cuenta? Registrate gratis</Link>*/}
         </Grid>
       </Grid>
   );

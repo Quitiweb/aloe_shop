@@ -10,9 +10,18 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            login: localStorage.getItem('token') ? localStorage.getItem('token') : false
+            login: localStorage.getItem('token') ? localStorage.getItem('token') : false,
+            username: ''
         }
     }
+
+    setUsername = (username) => {
+         this.setState({ username });
+    };
+
+    setLoginToken = (login) => {
+        this.setState({ login });
+    };
 
     render() {
         return (
@@ -21,7 +30,13 @@ class App extends Component {
                     <TopBar login={this.state.login}/>
                     <Switch>
                         <Route exact path='/' component={HomePage}/>
-                        <Route path='/login' render={(props) => <Login {...props} login={this.state.login} />}/>
+                        <Route path='/login' render={(props) => <Login {...props}
+                                               login={this.state.login}
+                                               username={this.state.username}
+                                               setUsername={this.setUsername}
+                                               setLoginToken={this.setLoginToken}
+                        />}
+                        />
                     </Switch>
                 </BrowserRouter>
             </div>

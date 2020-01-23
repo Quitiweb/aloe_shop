@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import {Grid} from "@material-ui/core";
+import Link from "@material-ui/core/Link";
 
 class LoginForm extends React.Component {
   state = {
@@ -51,6 +52,12 @@ class LoginForm extends React.Component {
             </Button>
             </Grid>
           </Grid>
+            <Grid container>
+        <Grid item xs={12} style={{marginTop: '25px'}}>
+          <Link onClick={() => this.props.display_form('signup')} style={{marginRight: '15px', cursor: 'pointer'}}>¿No tienes cuenta? Registrate gratis</Link>
+        </Grid>
+      </Grid>
+
         </form>
 
     );

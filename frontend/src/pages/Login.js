@@ -8,9 +8,9 @@ import {makeStyles} from "@material-ui/core/styles";
 
 
 const useStyles = makeStyles(theme => ({
-MuiSnackbar: {
-    marginTop: '15px'
-}
+    MuiSnackbar: {
+        marginTop: '15px'
+    }
 }));
 
 export default class Login extends React.Component {
@@ -33,7 +33,7 @@ export default class Login extends React.Component {
             })
                 .then(res => res.json())
                 .then(json => {
-                    this.setState({ username: json.username });
+                    this.props.setUsername(json.username);
                 });
         }
     }
@@ -53,9 +53,10 @@ export default class Login extends React.Component {
                    localStorage.setItem('token', json.token);
                     this.setState({
                         logged_in: true,
-                        displayed_form: '',
-                        username: json.user.username
+                        displayed_form: ''
                     });
+                    this.props.setUsername(json.user.username);
+                    this.props.setLoginToken(json.token);
                 } else {
                     this.setState({ open: true  });
                 }
@@ -76,14 +77,16 @@ export default class Login extends React.Component {
                 localStorage.setItem('token', json.token);
                 this.setState({
                     logged_in: true,
-                    displayed_form: '',
-                    username: json.username
+                    displayed_form: ''
                 });
+                this.props.setUsername(json.username);
+                this.props.setLoginToken(json.token);
             });
     };
 
     handle_logout = () => {
         localStorage.removeItem('token');
+        this.props.setLoginToken(false);
         this.setState({ logged_in: false, username: '' });
     };
 
@@ -105,10 +108,10 @@ export default class Login extends React.Component {
             let form;
         switch (this.state.displayed_form) {
             case 'login':
-                form = <LoginForm handle_login={this.handle_login} />;
+                form = <LoginForm handle_login={this.handle_login} display_form={this.display_form}/>;
                 break;
             case 'signup':
-                form = <SignupForm handle_signup={this.handle_signup} />;
+                form = <SignupForm handle_signup={this.handle_signup} display_form={this.display_form}/>;
                 break;
             default:
                 form = null;
@@ -144,7 +147,7 @@ export default class Login extends React.Component {
 
                 <h3>
                     {this.state.logged_in
-                        ? `Hello, ${this.state.username}`
+                        ? `Hello, ${this.props.username}`
                         : ''}
                 </h3>
             </div>

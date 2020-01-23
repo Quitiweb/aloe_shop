@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Grid} from "@material-ui/core";
+import Link from "@material-ui/core/Link";
 
 class SignupForm extends React.Component {
   state = {
@@ -36,6 +38,11 @@ class SignupForm extends React.Component {
           onChange={this.handle_change}
         />
         <input type="submit" />
+
+         <Grid item xs={12} style={{marginTop: '25px'}}>
+          <Link onClick={() => this.props.display_form('login')} style={{marginRight: '15px', cursor: 'pointer'}}>Inicia sesion</Link>
+        </Grid>
+
       </form>
     );
   }
