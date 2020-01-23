@@ -132,7 +132,7 @@ export default class Login extends React.Component {
         }
 
         return (
-            <div>
+            <div style={{marginTop: '70px'}}>
                  <Snackbar
                     anchorOrigin={{
                       vertical: 'top',

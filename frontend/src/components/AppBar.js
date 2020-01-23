@@ -128,7 +128,7 @@ export default function TopBar(props) {
 
     return (
         <div>
-            <AppBar position="static" className={classes.topbar} style={{position:"fixed"}}>
+            <AppBar position="static" className={classes.topbar} style={{position:"fixed", top: 0}}>
                 <Toolbar>
                     <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={toggleDrawer('left', true)}>
                         <MenuIcon />
