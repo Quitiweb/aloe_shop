@@ -28,7 +28,7 @@ const HomeOrganicFoodTwo = () => {
         <TabProductFive
           spaceTopClass="pt-95"
           spaceBottomClass="pb-70"
-          category="plant"
+          category="na"
         />
         {/* banner */}
         {/* <BannerSeventeen spaceTopClass="pt-95" /> */}

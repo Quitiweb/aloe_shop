@@ -1341,8 +1341,7 @@
         transform: translateX(0);
     }
     &:hover .default-img{
-        transform: translateX(-100%);
-        visibility: hidden;
+        
     }
     &:hover .product-action-2 a {
         transform: scaleX(1);

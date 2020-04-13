@@ -15,6 +15,10 @@ import * as serviceWorker from "./serviceWorker";
 
 import { composeWithDevTools } from "redux-devtools-extension";
 
+import axios from "axios";
+
+// var products;
+
 const store = createStore(
   rootReducer,
   load(),
@@ -22,7 +26,23 @@ const store = createStore(
 );
 
 // fetch products from json file
-store.dispatch(fetchProducts(products));
+// axios.get('http://127.0.0.1:8000/api')
+//   .then(function (response) {
+//     products = response.data
+//     console.log(response.data);
+//     products.map((producto)=>{  
+//       producto.image = [producto.image]
+//       producto.category = [producto.category]
+//       producto.tag = [producto.tag]
+//   }); 
+//     console.log(products)
+//     store.dispatch(fetchProducts(products));
+//   })
+//   .catch(function (error) {
+//     console.log(error);
+//   });
+
+  store.dispatch(fetchProducts(products));
 
 ReactDOM.render(
   <Provider store={store}>
