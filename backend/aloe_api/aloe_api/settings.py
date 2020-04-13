@@ -15,7 +15,10 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
+PROJECT_APP_ROOT = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+PROJECT_ROOT = os.path.abspath(os.path.dirname(PROJECT_APP_ROOT))
+HOST_ROOT = os.path.abspath(os.path.dirname(PROJECT_ROOT))
+PUBLIC_ROOT = os.path.abspath(os.path.join(HOST_ROOT, 'public'))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
@@ -144,3 +147,17 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(PUBLIC_ROOT, 'static')
+
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_ROOT, 'static'),
+)
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
+
+# Media files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')

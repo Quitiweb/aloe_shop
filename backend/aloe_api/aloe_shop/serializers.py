@@ -1,18 +1,29 @@
 # aloe_shop/serializers.py
-from .models import Ejemplo
+from .models import Producto
 from rest_framework import serializers
 from rest_framework_jwt.settings import api_settings
 from django.contrib.auth.models import User
 
 
-class TodoSerializer(serializers.ModelSerializer):
+class ProductoSerializer(serializers.ModelSerializer):
     class Meta:
         fields = (
             'id',
-            'titulo',
-            'descripcion',
+            'sku',
+            'name',
+            'price',
+            'discount',
+            'new',
+            'rating',
+            'saleCount',
+            'category',
+            'tag',
+            'stock',
+            'image',
+            'shortDescription',
+            'fullDescription'
         )
-        model = Ejemplo
+        model = Producto
 
 
 class UserSerializer(serializers.ModelSerializer):

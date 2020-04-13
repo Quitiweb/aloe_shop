@@ -9,18 +9,18 @@ from rest_framework.views import APIView
 from .serializers import UserSerializer, UserSerializerWithToken
 
 
-from .models import Ejemplo
-from .serializers import TodoSerializer
+from .models import Producto
+from .serializers import ProductoSerializer
 
 
-class ListEjemplo(generics.ListCreateAPIView):
-    queryset = Ejemplo.objects.all()
-    serializer_class = TodoSerializer
+class ListProducto(generics.ListCreateAPIView):
+    queryset = Producto.objects.all()
+    serializer_class = ProductoSerializer
 
 
-class DetailEjemplo(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Ejemplo.objects.all()
-    serializer_class = TodoSerializer
+class DetailProducto(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Producto.objects.all()
+    serializer_class = ProductoSerializer
 
 
 @api_view(['GET'])
