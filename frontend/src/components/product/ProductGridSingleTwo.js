@@ -29,12 +29,13 @@ const ProductGridSingleTwo = ({
   return (
     <Fragment>
       <div
-        className={`col-xl-3 col-md-6 col-lg-4 col-sm-6 ${
+        className={`col-6 col-xl-3 col-md-6 col-lg-4 col-sm-6 ${
           sliderClassName ? sliderClassName : ""
         }`}
       >
         <div
-          className={`product-wrap-2 ${
+          style={{border: '1px solid #788968', borderRadius: 10, padding: 5}}
+          className={`shadow-sm product-wrap-2 ${
             spaceBottomClass ? spaceBottomClass : ""
           }`}
         >
@@ -70,7 +71,7 @@ const ProductGridSingleTwo = ({
               ""
             )}
           </div>
-          <div className="product-content-2">
+          <div className="product-content-2 m-1">
             <div className="title-price-wrap-2">
               <h3>
                 <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>

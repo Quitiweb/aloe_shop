@@ -1,147 +1,34 @@
 [
   {
-    "id": "26",
-    "sku": "asdf148",
-    "name": "Lorem ipsum plant one",
-    "price": 15.6,
-    "discount": 0,
-    "new": false,
-    "rating": 4,
-    "saleCount": 90,
-    "category": ["plant"],
-    "tag": ["plant"],
-    "stock": 15,
-    "image": [
-      "/assets/img/product/plants/1.jpg",
-      "/assets/img/product/plants/2.jpg"
-    ],
-    "shortDescription": "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
-    "fullDescription": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."
+      "id": "1",
+      "sku": "123",
+      "name": "Aceite Relax Aloe Vera",
+      "price": 15.0,
+      "discount": 0,
+      "new": false,
+      "rating": 0.0,
+      "saleCount": 0,
+      "category": ["na"],
+      "tag": ["na"],
+      "stock": 150,
+      "image": ["http://127.0.0.1:8000/media/myphoto/2020/04/13/Aceite-Aloe-Vera-Relax_CHWDNu8.jpg"],
+      "shortDescription": "Este producto es una combinación de Aceite de Almendras, Aceite de Rosa Mosqueta, Aceite de Manzanilla y Aceites Esenciales Naturales relajantes de Bergamota y Mandarina para hidratar y reparar la piel produciendo una sensación placentera de relajación.",
+      "fullDescription": "Hidrata y repara la piel produciendo una sensación placentera de relajación. Indicado para masajes relajantes aprovechando los aceites esenciales que relajan los sentidos. Gracias a los extractos de Aloe Vera la piel se calma y relaja, absorbiendo todos los nutrientes de esta plata y quedando excepcionalmente suave. Reduce la irritación, inflamación y nutre la piel, reafirmando y revitalizandola. Ingredientes Activos: Aceite De Almendras Dulces, Aceite De Rosa Mosqueta, Manzanilla, Aceite Esencial De Bergamota, Aceite Esencial De Mandarina Modo de empleo: Aplicar una pequeña cantidad sobre la zona a tratar y realizar un ligero masaje hasta su completa absorción. Precaución: Evitar el contacto con directo con los ojos, mucosas y heridas abiertas. Mantener fuera del alcance de los niños. No utilizar en niños menores de 3 años. No ingerir."
   },
   {
-    "id": "27",
-    "sku": "asdf149",
-    "name": "Lorem ipsum plant two",
-    "price": 10.6,
-    "discount": 10,
-    "new": true,
-    "rating": 5,
-    "saleCount": 190,
-    "category": ["plant"],
-    "tag": ["plant"],
-    "stock": 25,
-    "image": [
-      "/assets/img/product/plants/2.jpg"
-    ],
-    "shortDescription": "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
-    "fullDescription": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."
-  },
-  {
-    "id": "28",
-    "sku": "asdf150",
-    "name": "Lorem ipsum plant three",
-    "price": 12.5,
-    "discount": 20,
-    "new": true,
-    "rating": 3,
-    "saleCount": 90,
-    "category": ["plant"],
-    "tag": ["plant"],
-    "stock": 20,
-    "image": [
-      "/assets/img/product/plants/3.jpg"
-    ],
-    "shortDescription": "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
-    "fullDescription": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."
-  },
-  {
-    "id": "29",
-    "sku": "asdf151",
-    "name": "Lorem ipsum plant four",
-    "price": 14.5,
-    "discount": 30,
-    "new": false,
-    "rating": 4,
-    "saleCount": 100,
-    "category": ["plant"],
-    "tag": ["plant"],
-    "stock": 40,
-    "image": [
-      "/assets/img/product/plants/4.jpg"
-    ],
-    "shortDescription": "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
-    "fullDescription": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."
-  },
-  {
-    "id": "30",
-    "sku": "asdf152",
-    "name": "Lorem ipsum plant five",
-    "price": 22.5,
-    "discount": 10,
-    "new": true,
-    "rating": 5,
-    "saleCount": 120,
-    "category": ["plant"],
-    "tag": ["plant"],
-    "stock": 45,
-    "image": [
-      "/assets/img/product/plants/5.jpg"
-    ],
-    "shortDescription": "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
-    "fullDescription": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."
-  },
-  {
-    "id": "31",
-    "sku": "asdf153",
-    "name": "Lorem ipsum plant six",
-    "price": 12.5,
-    "discount": 0,
-    "new": false,
-    "rating": 4,
-    "saleCount": 20,
-    "category": ["plant"],
-    "tag": ["plant"],
-    "stock": 5,
-    "image": [
-      "/assets/img/product/plants/6.jpg"
-    ],
-    "shortDescription": "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
-    "fullDescription": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."
-  },
-  {
-    "id": "32",
-    "sku": "asdf154",
-    "name": "Lorem ipsum plant seven",
-    "price": 22.5,
-    "discount": 20,
-    "new": true,
-    "rating": 5,
-    "saleCount": 25,
-    "category": ["plant"],
-    "tag": ["plant"],
-    "stock": 7,
-    "image": [
-      "/assets/img/product/plants/7.jpg"
-    ],
-    "shortDescription": "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
-    "fullDescription": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."
-  },
-  {
-    "id": "33",
-    "sku": "asdf155",
-    "name": "Lorem ipsum plant eight",
-    "price": 32.5,
-    "discount": 10,
-    "new": true,
-    "rating": 4,
-    "saleCount": 15,
-    "category": ["plant"],
-    "tag": ["plant"],
-    "stock": 6,
-    "image": [
-      "/assets/img/product/plants/8.jpg"
-    ],
-    "shortDescription": "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
-    "fullDescription": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."
+      "id": "2",
+      "sku": "111",
+      "name": "prod2",
+      "price": 15.0,
+      "discount": 1,
+      "new": true,
+      "rating": 5.0,
+      "saleCount": 4,
+      "category": ["na"],
+      "tag": ["na"],
+      "stock": 123,
+      "image": ["http://127.0.0.1:8000/media/myphoto/2020/04/13/Aceite-Aloe-Vera-Relax.jpg"],
+      "shortDescription": "Este producto es una combinación de Aceite de Almendras, Aceite de Rosa Mosqueta, Aceite de Manzanilla y Aceites Esenciales Naturales relajantes de Bergamota y Mandarina para hidratar y reparar la piel produciendo una sensación placentera de relajación.",
+      "fullDescription": "Hidrata y repara la piel produciendo una sensación placentera de relajación. Indicado para masajes relajantes aprovechando los aceites esenciales que relajan los sentidos. Gracias a los extractos de Aloe Vera la piel se calma y relaja, absorbiendo todos los nutrientes de esta plata y quedando excepcionalmente suave. Reduce la irritación, inflamación y nutre la piel, reafirmando y revitalizandola. Ingredientes Activos: Aceite De Almendras Dulces, Aceite De Rosa Mosqueta, Manzanilla, Aceite Esencial De Bergamota, Aceite Esencial De Mandarina Modo de empleo: Aplicar una pequeña cantidad sobre la zona a tratar y realizar un ligero masaje hasta su completa absorción. Precaución: Evitar el contacto con directo con los ojos, mucosas y heridas abiertas. Mantener fuera del alcance de los niños. No utilizar en niños menores de 3 años. No ingerir."
   }
 ]

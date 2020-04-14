@@ -462,7 +462,7 @@
     }
     .pro-details-list{
         margin: 20px 0 34px;
-        border-bottom: 1px solid #e5e5e5;
+        // border-bottom: 1px solid #e5e5e5;
         padding: 0 0 37px;
         ul {
             li{
@@ -1202,6 +1202,9 @@
         }
         & .default-img {
             transition: all 0.5s ease-in-out;
+            @media #{$xs-layout}{
+                height: 200px !important;
+            }
         }
         & .hover-img {
             position: absolute;

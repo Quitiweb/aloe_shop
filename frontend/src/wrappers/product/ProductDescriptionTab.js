@@ -5,7 +5,7 @@ import Nav from "react-bootstrap/Nav";
 
 const ProductDescriptionTab = ({ spaceBottomClass, productFullDesc }) => {
   return (
-    <div className={`description-review-area ${spaceBottomClass}`}>
+    <div className={`description-review-area ${spaceBottomClass}`} style={{ marginTop: -60 }}>
       <div className="container">
         <div className="description-review-wrapper">
           <Tab.Container defaultActiveKey="productDescription">

@@ -21,7 +21,17 @@ const HomeOrganicFoodTwo = () => {
       </MetaTags>
       <LayoutOne headerTop="visible">
         {/* hero slider */}
-        <HeroSliderTwenty spaceLeftClass="ml-70" spaceRightClass="mr-70" />
+        <div className={'col-12 row header-icon'} style={{ display: 'none' }}>
+          <div className={'col-2'}></div>
+          <img
+            className={'col-8'}
+            alt=""
+            src={process.env.PUBLIC_URL + "/assets/img/logo/icon_transparent.png"}
+            style={{position: 'relative', left: 10, maxWidth: 500}}
+          />
+          <div className={'col-2'}></div>
+        </div>
+        {/* <HeroSliderTwenty spaceLeftClass="ml-70" spaceRightClass="mr-70" /> */}
         {/* feature icon */}
 
         {/* tab product */}

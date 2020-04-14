@@ -10,6 +10,8 @@ import ProductDescriptionTab from "../../wrappers/product/ProductDescriptionTab"
 import ProductImageDescriptionSlider from "../../wrappers/product/ProductImageDescriptionSlider";
 
 const ProductSlider = ({ location, product }) => {
+
+  console.log(product)
   const { pathname } = location;
 
   return (

@@ -72,9 +72,11 @@
 .logo {
 	margin-top: 32px;
     @media #{$md-layout}{
+        display: none;
         margin-top: 0px;
     }
     @media #{$xs-layout}{
+        display: none;
         margin-top: 0px;
     }
     &.logo-hm5 {
@@ -99,6 +101,16 @@
             margin-top: 0px;
             text-align: left !important;
         }
+    }
+}
+
+.header-icon {
+    @media #{$md-layout}{
+        display: block !important;
+        margin-left: 15%;
+    }
+    @media #{$xs-layout}{
+        display: block !important;
     }
 }
 
