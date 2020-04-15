@@ -31,6 +31,8 @@ const Checkout = lazy(() => import("./pages/other/Checkout"));
 
 const NotFound = lazy(() => import("./pages/other/NotFound"));
 
+const Admin = lazy(() => import("./pages/other/Admin"));
+
 const App = props => {
   useEffect(() => {
     props.dispatch(
@@ -119,9 +121,17 @@ const App = props => {
                 />
 
                 <Route
-                  path={process.env.PUBLIC_URL + "/not-found"}
-                  component={NotFound}
+                  path={process.env.PUBLIC_URL + "/admin"}
+                  component={Admin}
                 />
+
+                
+                <Route
+                  path={process.env.PUBLIC_URL + "/shop-grid-standard"}
+                  component={ShopGridStandard}
+                />
+
+
 
                 <Route exact component={NotFound} />
               </Switch>

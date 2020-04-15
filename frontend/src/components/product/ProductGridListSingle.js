@@ -35,6 +35,7 @@ const ProductGridListSingle = ({
         }`}
       >
         <div
+        style={{border: '1px solid #788968', borderRadius: 10, padding: 5}}
           className={`product-wrap ${spaceBottomClass ? spaceBottomClass : ""}`}
         >
           <div className="product-img">

@@ -21,6 +21,7 @@ const TabProductFive = ({
         <Tab.Container defaultActiveKey="bestSeller">
           <Nav
             variant="pills"
+            style={{ marginLeft: '7%' }}
             className={`product-tab-list-2 mb-60 ${
               productTabClass ? productTabClass : ""
             }`}
