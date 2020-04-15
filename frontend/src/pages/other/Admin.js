@@ -6,6 +6,7 @@ import { getProducts } from "../../helpers/product";
 import { addToCart } from "../../redux/actions/cartActions";
 import { addToWishlist } from "../../redux/actions/wishlistActions";
 import { addToCompare } from "../../redux/actions/compareActions";
+import axios from 'axios';
 
 const Admin = ({
     products,
@@ -20,7 +21,31 @@ const Admin = ({
     spaceBottomClass
 }) => {
 
-    const [visible, setVisible] = useState(false);
+    var onClickButton = () => {
+
+
+        axios.post('http://127.0.0.1:8000/api/', {
+            sku: '111',
+            name: 'Producto de prueba',
+            price: 1,
+            discount: 5,
+            new: false,
+            rating: 0.0,
+            saleCount: 0,
+            category: 'na',
+            tag: 'na',
+            stock: 150,
+            image: null,
+            shortDescription: "na",
+            fullDescription: "naaaaaaaaaaaaaa"
+          })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    }
 
     return(
         <Fragment>
@@ -41,6 +66,7 @@ const Admin = ({
 
                 <div className="row mt-5">
                     <div className="col-12 mt-3">
+                        <h4>Listado de productos</h4>
                         <table class="table">
                             <thead>
                                 <tr>
@@ -66,42 +92,44 @@ const Admin = ({
                         </table>
                     </div>
 
-
+                <div className="col-12 mt-5">
+                    <h4>Añadir un producto</h4>
+                </div>
                     <div className="col-1"></div>
 
-                    <div className="col-10 mt-5">
+                    <form className="col-12 col-lg-10" method="POST">
                         <div className="row">
                             <div className="col-12 mt-2">
-                                <input type="text" placeholder="Nombre" />
+                                <input type="text" placeholder="Nombre" id="form-nombre"/>
                             </div>
                             <div className="col-6 mt-2">
-                                <input type="text" placeholder="SKU" />
+                                <input type="text" placeholder="SKU" id="form-sku"/>
                             </div>
                             <div className="col-6 mt-2">
-                                <input type="text" placeholder="Precio" />
+                                <input type="text" placeholder="Precio" id="form-precio"/>
                             </div>
                             <div className="col-6 mt-2">
-                                <input type="text" placeholder="% Descuento" />
+                                <input type="text" placeholder="% Descuento" id="form-decuento"/>
                             </div>
                             
                             <div className="col-6 mt-2">
-                                <input type="text" placeholder="Stock" />
+                                <input type="text" placeholder="Stock" id="form-stock"/>
                             </div>
                             <div className="col-6 mt-2">
-                                <input type="text" placeholder="Categorías" />
+                                <input type="text" placeholder="Categorías" id="form-categorias"/>
                             </div>
                             <div className="col-6 mt-2">
-                                <input type="text" placeholder="Etiquetas" />
+                                <input type="text" placeholder="Etiquetas" id="form-etiquetas"/>
                             </div>
                             <div className="col-4 mt-4">Sube una imagen de tu producto:</div>
                             <div className="col-8 mt-4">
                                 <input style={{background: 'none', border: 'none'}}
                                         type="file" 
-                                        accept="image/x-png,image/gif,image/jpeg" />
+                                        accept="image/x-png,image/gif,image/jpeg" id="form-image"/>
                             </div>
 
                             <div className="col-12">
-                                <input type="text" placeholder="Descripción breve del producto"/>
+                                <input type="text" placeholder="Descripción breve del producto"id="form-"/>
                             </div>
 
                             <div className="col-12 mt-3">
@@ -110,8 +138,8 @@ const Admin = ({
                                 </textarea>
                             </div>
                         </div>
-                        <button className="btn-hover btn-admin mb-5">Añadir Producto</button>
-                    </div>
+                        <button type="button" onClick={() => onClickButton()} className="btn-hover btn-admin mb-5">Añadir Producto</button>
+                    </form>
 
                 </div>
 
