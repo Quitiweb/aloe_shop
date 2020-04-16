@@ -32,6 +32,7 @@ const Checkout = lazy(() => import("./pages/other/Checkout"));
 const NotFound = lazy(() => import("./pages/other/NotFound"));
 
 const Admin = lazy(() => import("./pages/other/Admin"));
+const Detalle = lazy(() => import("./pages/other/Detalle"));
 
 const App = props => {
   useEffect(() => {
@@ -123,6 +124,11 @@ const App = props => {
                 <Route
                   path={process.env.PUBLIC_URL + "/admin"}
                   component={Admin}
+                />
+
+                <Route
+                  path={process.env.PUBLIC_URL + "/detalle/:id"}
+                  component={Detalle}
                 />
 
                 

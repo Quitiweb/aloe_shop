@@ -2,10 +2,13 @@ import React, {Fragment, useEffect, useState} from 'react'
 import LayoutOne from "../../layouts/LayoutOne";
 import MetaTags from "react-meta-tags";
 import axios from 'axios';
+import { Redirect } from 'react-router-dom'
+import { useHistory } from "react-router-dom";
 
 const Admin = ({
 }) => {
 
+    var history = useHistory();
     var [products, setProducts] = useState([]);
 
     
@@ -68,6 +71,11 @@ const Admin = ({
           });
     }
 
+    var onClickRow = (id) => {
+        
+        history.push("/detalle/" + id);
+    }
+
     return(
         <Fragment>
             <MetaTags>
@@ -88,7 +96,7 @@ const Admin = ({
                 <div className="row mt-5">
                     <div className="col-12 mt-3">
                         <h4>Listado de productos</h4>
-                        <table class="table">
+                        <table className="table">
                             <thead>
                                 <tr>
                                 <th scope="col">ID</th>
@@ -100,11 +108,11 @@ const Admin = ({
                             <tbody>
                             {products.map((producto)=>{
                                 return (
-                                <tr key={producto}>
-                                <th scope="row">{producto.id}</th>
-                                <td>{producto.sku}</td>
-                                <td>{producto.name}</td>
-                                <td>{producto.price}</td>
+                                <tr key={producto.id} style={{ cursor: 'pointer' }} onClick={() => onClickRow(producto.id)}>
+                                    <th scope="row">{producto.id}</th>
+                                    <td>{producto.sku}</td>
+                                    <td>{producto.name}</td>
+                                    <td>{producto.price}</td>
                                 </tr>                                 
                                 )
                             })}
