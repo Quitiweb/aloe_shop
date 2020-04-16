@@ -82,7 +82,7 @@ const Admin = ({
                 <title>aloeshop | admin</title>
                 <meta
                 name="description"
-                content="Cart page of flone react minimalist eCommerce template."
+                content="Admin."
                 />
             </MetaTags>
         <LayoutOne headerTop="hidden">

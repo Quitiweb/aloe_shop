@@ -1845,3 +1845,9 @@ a.default-btn {
     border-radius: 50px;
   }
 }
+
+.textDetalle {
+  @media #{$xs-layout} {
+    width: 300px !important;
+  }
+}
