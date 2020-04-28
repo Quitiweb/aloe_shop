@@ -7,9 +7,38 @@ import Tab from "react-bootstrap/Tab";
 import Nav from "react-bootstrap/Nav";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
+import axios from 'axios';
+import { useHistory } from "react-router-dom";
 
 const LoginRegister = ({ location }) => {
+
+  let history = useHistory();
+
   const { pathname } = location;
+
+  const submitLogin = () => {
+    var username = document.getElementById('login-username').value;
+    var password = document.getElementById('login-password').value;
+    
+    axios.post('http://127.0.0.1:8000/rest-auth/login/', {
+      username: username,
+      password: password
+    }, )
+    .then(function (response) {
+      console.log(response);
+      localStorage.setItem('username', username);
+      localStorage.setItem('token', 'Token ' + response.data.key);
+      history.push('/');
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+  }
+
+  const submitRegister = () => {
+    console.log('nanana')
+  }
 
   return (
     <Fragment>
@@ -51,11 +80,13 @@ const LoginRegister = ({ location }) => {
                           <div className="login-register-form">
                             <form>
                               <input
+                                id="login-username"
                                 type="text"
                                 name="user-name"
                                 placeholder="Username"
                               />
                               <input
+                                id="login-password"
                                 type="password"
                                 name="user-password"
                                 placeholder="Password"
@@ -68,7 +99,7 @@ const LoginRegister = ({ location }) => {
                                     Forgot Password?
                                   </Link>
                                 </div>
-                                <button type="submit">
+                                <button type="button" onClick={() => submitLogin()}>
                                   <span>Login</span>
                                 </button>
                               </div>
@@ -96,7 +127,7 @@ const LoginRegister = ({ location }) => {
                                 type="email"
                               />
                               <div className="button-box">
-                                <button type="submit">
+                                <button type="button" onClick={() => submitRegister()}>
                                   <span>Register</span>
                                 </button>
                               </div>

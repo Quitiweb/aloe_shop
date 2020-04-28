@@ -51,7 +51,7 @@ const Admin = ({
         form_data.append('category', document.getElementById('form-categorias').value)
         form_data.append('tag', document.getElementById('form-etiquetas').value)
         form_data.append('stock', document.getElementById('form-stock').value)
-        form_data.append('image', document.getElementById('form-image').files[0])
+        form_data.append('image', )
         form_data.append('shortDescription', document.getElementById('form-breve').value)
         form_data.append('fullDescription', document.getElementById('form-full').value)
         

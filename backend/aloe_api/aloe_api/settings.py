@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'aloe_shop',
     'corsheaders',
-    'rest_framework'
+    'rest_framework',
+    'rest_framework.authtoken',
+    'rest_auth'
 ]
 
 REST_FRAMEWORK = {
@@ -73,6 +75,9 @@ CORS_ORIGIN_WHITELIST = (
     'http://localhost:8000',
     'http://localhost:8080',
 )
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
 
 JWT_AUTH = {
     'JWT_RESPONSE_PAYLOAD_HANDLER': 'aloe_shop.utils.my_jwt_response_handler'

@@ -1,9 +1,11 @@
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import MenuCart from "./sub-components/MenuCart";
 import { deleteFromCart } from "../../redux/actions/cartActions";
+
+import axios from 'axios';
 
 const IconGroup = ({
   currency,
@@ -13,9 +15,28 @@ const IconGroup = ({
   deleteFromCart,
   iconWhiteClass
 }) => {
+
+  const [token, setToken] = useState(localStorage.getItem('token'));
+
   const handleClick = e => {
     e.currentTarget.nextSibling.classList.toggle("active");
   };
+
+  const handleLogout = (e) => {
+
+    e.preventDefault();
+
+    axios.post('http://127.0.0.1:8000/rest-auth/logout/', {
+    }, )
+    .then(function (response) {
+      localStorage.removeItem('token');
+      setToken(null);
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
 
   const triggerMobileMenu = () => {
     const offcanvasMobileMenu = document.querySelector(
@@ -47,20 +68,34 @@ const IconGroup = ({
           <i className="pe-7s-user-female" />
         </button>
         <div className="account-dropdown">
-          <ul>
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/login-register"}>Login</Link>
-            </li>
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/login-register"}>
-                Register
-              </Link>
-            </li>
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/my-account"}>
-                my account
-              </Link>
-            </li>
+        <ul>
+          {
+            
+             token ?
+              <div>
+                <li>
+                  <Link to={process.env.PUBLIC_URL + "/my-account"}>
+                    my account
+                  </Link>
+                </li>
+                <li>
+                  <Link to={""} onClick={(e) => handleLogout(e)}>
+                    logout
+                  </Link>
+                </li>
+              </div>
+            :
+            <div>
+              <li>
+                <Link to={process.env.PUBLIC_URL + "/login-register"}>Login</Link>
+              </li>
+              <li>
+                <Link to={process.env.PUBLIC_URL + "/login-register"}>
+                  Register
+                </Link>
+              </li> 
+            </div>
+          }
           </ul>
         </div>
       </div>
