@@ -1,4 +1,0 @@
-django==2.1.9
-djangorestframework
-djangorestframework-jwt
-django-rest-auth
