@@ -7,6 +7,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializers import UserSerializer, UserSerializerWithToken
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 
 from .models import Producto
@@ -16,6 +18,7 @@ from .serializers import ProductoSerializer
 class ListProducto(generics.ListCreateAPIView):
     queryset = Producto.objects.all()
     serializer_class = ProductoSerializer
+
 
 
 class DetailProducto(generics.RetrieveUpdateDestroyAPIView):
@@ -31,6 +34,23 @@ def current_user(request):
 
     serializer = UserSerializer(request.user)
     return Response(serializer.data)
+
+
+@api_view(['GET'])
+def is_admin(request):
+    """
+    Determine the current user by their token, and return their data
+    """
+
+    serializer = UserSerializer(request.user)
+
+    if request.user.is_superuser:
+        return Response(serializer.data)
+    return Response({
+        'status': 'Forbidden',
+        'message': 'Please authenticate yourself as admin to continue',
+        'errors': 'NO_ADMIN'  # for example
+    }, status=status.HTTP_400_BAD_REQUEST)
 
 
 class UserList(APIView):

@@ -14,13 +14,15 @@ const LoginRegister = ({ location }) => {
 
   let history = useHistory();
 
+  const url = window.$BASE_URL;
+
   const { pathname } = location;
 
   const submitLogin = () => {
     var username = document.getElementById('login-username').value;
     var password = document.getElementById('login-password').value;
     
-    axios.post('http://127.0.0.1:8000/rest-auth/login/', {
+    axios.post(url + '/rest-auth/login/', {
       username: username,
       password: password
     }, )

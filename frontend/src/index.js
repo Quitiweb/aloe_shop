@@ -25,8 +25,11 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(thunk, save()))
 );
 
+window.$BASE_URL = 'http://127.0.0.1:8000';
+const url = window.$BASE_URL;
+
 // fetch products from json file
-axios.get('http://127.0.0.1:8000/api')
+axios.get( url + '/api')
   .then(function (response) {
     products = response.data
     console.log(response.data);

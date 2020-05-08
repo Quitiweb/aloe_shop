@@ -10,14 +10,31 @@ const Admin = ({
 
     var history = useHistory();
     var [products, setProducts] = useState([]);
+    var [token, setToken] = useState(localStorage.getItem('token'));
 
+    const url = window.$BASE_URL;
     
     useEffect(() => {
-        recargarVista();
+        axios.get(url + '/api/is_admin', {
+            headers: {
+                Authorization: token
+            }
+        })
+        .then(function (response) {
+            console.log(response);
+            recargarVista();
+        }).catch(function (error) {
+            history.push('/');
+            console.log(error);
+        });   
     },[]) 
 
     var recargarVista = () => {
-        axios.get('http://127.0.0.1:8000/api')
+        axios.get(url + '/api', {
+            headers: {
+                Authorization: token
+            }
+        })
         .then(function (response) {
           setProducts(response.data)
           console.log(response.data);
@@ -55,7 +72,7 @@ const Admin = ({
         form_data.append('shortDescription', document.getElementById('form-breve').value)
         form_data.append('fullDescription', document.getElementById('form-full').value)
         
-        axios.post('http://127.0.0.1:8000/api/',form_data, {
+        axios.post(url + '/api/',form_data, {
             headers: {
               'accept': 'application/json',
               'Accept-Language': 'en-US,en;q=0.8',
@@ -77,7 +94,7 @@ const Admin = ({
     }
 
     return(
-        <Fragment>
+        <Fragment style={{ display: token ? 'block' : 'none'   }}>
             <MetaTags>
                 <title>aloeshop | admin</title>
                 <meta

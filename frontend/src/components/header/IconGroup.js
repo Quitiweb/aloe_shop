@@ -1,9 +1,10 @@
 import PropTypes from "prop-types";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import MenuCart from "./sub-components/MenuCart";
 import { deleteFromCart } from "../../redux/actions/cartActions";
+import { useHistory } from "react-router-dom";
 
 import axios from 'axios';
 
@@ -16,7 +17,29 @@ const IconGroup = ({
   iconWhiteClass
 }) => {
 
+  let history = useHistory();
+
   const [token, setToken] = useState(localStorage.getItem('token'));
+  const [username, setUsername] = useState('');
+  const [admin, setAdmin] = useState('');
+
+  const url = window.$BASE_URL;
+
+  useEffect(() => {
+    axios.get(url + '/api/current_user', {
+        headers: {
+            Authorization: token
+        }
+    })
+    .then(function (response) {
+      setUsername(response.data.username)
+      setAdmin(response.data.is_superuser)
+    }).catch(function (error) {
+        history.push('/');
+        console.log(error);
+    });   
+},[]) 
+
 
   const handleClick = e => {
     e.currentTarget.nextSibling.classList.toggle("active");
@@ -26,11 +49,12 @@ const IconGroup = ({
 
     e.preventDefault();
 
-    axios.post('http://127.0.0.1:8000/rest-auth/logout/', {
+    axios.post(url + '/rest-auth/logout/', {
     }, )
     .then(function (response) {
       localStorage.removeItem('token');
       setToken(null);
+      history.push('/login-register');
       console.log(response);
     })
     .catch(function (error) {
@@ -49,6 +73,7 @@ const IconGroup = ({
     <div
       className={`header-right-wrap ${iconWhiteClass ? iconWhiteClass : ""}`}
     >
+      <span>{ username }</span>
       <div className="same-style header-search d-none d-lg-block">
       
         <div className="search-content">
@@ -78,6 +103,15 @@ const IconGroup = ({
                     my account
                   </Link>
                 </li>
+                { admin ?
+                  <li>
+                  <Link to={""} to={process.env.PUBLIC_URL + "/admin"}>
+                    admin
+                  </Link>
+                  </li>
+                  : 
+                  ''
+                }
                 <li>
                   <Link to={""} onClick={(e) => handleLogout(e)}>
                     logout

@@ -8,13 +8,14 @@ const Detalle = (props) => {
     var id = props.match.params.id;
 
     var productEdit = product;
+    const url = window.$BASE_URL;
     
     useEffect(() => {
         recargarVista()
     },[]) 
 
     var recargarVista = () => {
-        axios.get('http://127.0.0.1:8000/api/' + id)
+        axios.get(url + '/api/' + id)
         .then(function (response) {
           
           console.log(response)
@@ -43,7 +44,7 @@ const Detalle = (props) => {
         form_data.append('shortDescription', document.getElementById('form-breve').value)
         form_data.append('fullDescription', document.getElementById('form-full').value)
 
-        axios.put('http://127.0.0.1:8000/api/' + id + '/',form_data, {
+        axios.put(url + '/api/' + id + '/',form_data, {
             headers: {
               'accept': 'application/json',
               'Accept-Language': 'en-US,en;q=0.8',
