@@ -8,9 +8,16 @@ import { getDiscountPrice } from "../../helpers/product";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 
+import {Elements} from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
+
 const Checkout = ({ location, cartItems, currency }) => {
   const { pathname } = location;
   let cartTotalPrice = 0;
+
+  // Make sure to call `loadStripe` outside of a component’s render to avoid
+  // recreating the `Stripe` object on every render.
+  const stripePromise = loadStripe('pk_test_EWSeagyB1I3s7NgfqPQDYzyd00mkNEZEUA');
 
   return (
     <Fragment>
@@ -220,6 +227,13 @@ const Checkout = ({ location, cartItems, currency }) => {
                 </div>
               </div>
             )}
+
+            <div className={'col-12'}>
+              nnn
+            <Elements stripe={stripePromise}>
+              
+            </Elements>
+            </div>
           </div>
         </div>
       </LayoutOne>
