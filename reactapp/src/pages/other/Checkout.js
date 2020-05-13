@@ -7,6 +7,7 @@ import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import { getDiscountPrice } from "../../helpers/product";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
+import CheckoutForm from './CheckoutForm'
 
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
@@ -18,7 +19,6 @@ const Checkout = ({ location, cartItems, currency }) => {
   // Make sure to call `loadStripe` outside of a component’s render to avoid
   // recreating the `Stripe` object on every render.
   const stripePromise = loadStripe('pk_test_EWSeagyB1I3s7NgfqPQDYzyd00mkNEZEUA');
-
   return (
     <Fragment>
       <MetaTags>
@@ -228,10 +228,9 @@ const Checkout = ({ location, cartItems, currency }) => {
               </div>
             )}
 
-            <div className={'col-12'}>
-              nnn
+            <div className={'col-12 col-lg-6 mt-5'}>
             <Elements stripe={stripePromise}>
-              
+              <CheckoutForm/>
             </Elements>
             </div>
           </div>
