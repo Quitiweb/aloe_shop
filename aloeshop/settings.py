@@ -6,7 +6,6 @@ Django settings for aloeshop project.
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 HOST_ROOT = os.path.abspath(os.path.dirname(BASE_DIR))
@@ -20,7 +19,11 @@ SECRET_KEY = '+dxineo@acgmz*h^y&9lis9w^2tk)z8^tff421y**ag6-iqd(l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.quitiweb.com', ]
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+    '.quitiweb.com',
+]
 
 # Application definition
 INSTALLED_APPS = [
