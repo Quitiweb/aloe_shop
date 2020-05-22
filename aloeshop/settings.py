@@ -33,7 +33,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'rest_auth',
-    'aloe_shop',
+    'aloeapp',
     'corsheaders',
 ]
 
@@ -69,10 +69,6 @@ CORS_ORIGIN_WHITELIST = (
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
-
-JWT_AUTH = {
-    'JWT_RESPONSE_PAYLOAD_HANDLER': 'aloe_shop.utils.my_jwt_response_handler'
-}
 
 ROOT_URLCONF = 'aloeshop.urls'
 
