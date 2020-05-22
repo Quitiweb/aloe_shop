@@ -7,29 +7,14 @@ from django.contrib.auth.models import User
 
 class ProductoSerializer(serializers.ModelSerializer):
     class Meta:
-        fields = (
-            'id',
-            'sku',
-            'name',
-            'price',
-            'discount',
-            'new',
-            'rating',
-            'saleCount',
-            'category',
-            'tag',
-            'stock',
-            'image',
-            'shortDescription',
-            'fullDescription'
-        )
         model = Producto
+        fields = "__all__"
 
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('username', 'is_superuser')
+        fields = ('username', 'is_superuser', )
 
 
 class UserSerializerWithToken(serializers.ModelSerializer):
@@ -54,4 +39,4 @@ class UserSerializerWithToken(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('token', 'username', 'password')
+        fields = ('token', 'username', 'password', )
