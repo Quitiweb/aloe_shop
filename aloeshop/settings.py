@@ -35,7 +35,13 @@ INSTALLED_APPS = [
     'rest_auth',
     'aloeapp',
     'corsheaders',
+    'django.contrib.sites',
+    'allauth.account',
+    'allauth',
+    'rest_auth.registration',
 ]
+
+SITE_ID = 1
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
