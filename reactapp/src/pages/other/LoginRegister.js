@@ -30,6 +30,40 @@ const LoginRegister = ({ location }) => {
     }, )
     .then(function (response) {
       console.log(response);
+
+      addToast('Tu cuenta ha sido creada con éxito, inicia sesión para continuar', 
+      { 
+          appearance: 'info', 
+          autoDismiss: true 
+      }
+  )
+    })
+    .catch(function (error) {
+      console.log(error);
+      addToast('No se ha podido iniciar sesión con los datos introducidos', 
+      { 
+          appearance: 'error', 
+          autoDismiss: true 
+      }
+  )
+    });
+
+  }
+
+  const submitRegister = () => {
+    var username = document.getElementById('register-username').value;
+    var password1 = document.getElementById('register-pwd1').value;
+    var password2 = document.getElementById('register-pwd2').value;
+    var email = document.getElementById('register-email').value;
+
+    axios.post(url + '/rest-auth/registration/', {
+      username: username,
+      password1: password1,
+      password2: password2,
+      email: email
+    }, )
+    .then(function (response) {
+      console.log(response);
       localStorage.setItem('username', username);
       localStorage.setItem('token', 'Token ' + response.data.key);
       history.push('/');
@@ -50,11 +84,6 @@ const LoginRegister = ({ location }) => {
       }
   )
     });
-
-  }
-
-  const submitRegister = () => {
-    console.log('nanana')
   }
 
   return (
@@ -129,16 +158,25 @@ const LoginRegister = ({ location }) => {
                           <div className="login-register-form">
                             <form>
                               <input
+                                id="register-username"
                                 type="text"
                                 name="user-name"
                                 placeholder="Username"
                               />
                               <input
+                                id="register-pwd1"
                                 type="password"
                                 name="user-password"
                                 placeholder="Password"
                               />
                               <input
+                                id="register-pwd2"
+                                type="password"
+                                name="user-password"
+                                placeholder="Repeat your Password"
+                              />
+                              <input
+                                id="register-email"
                                 name="user-email"
                                 placeholder="Email"
                                 type="email"

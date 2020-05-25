@@ -35,7 +35,14 @@ INSTALLED_APPS = [
     'rest_auth',
     'aloeapp',
     'corsheaders',
+    'django.contrib.sites',
+    'allauth.account',
+    'allauth',
+    'rest_auth.registration',
 ]
+
+SITE_ID = 1
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
