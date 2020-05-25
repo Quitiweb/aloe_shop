@@ -12,6 +12,7 @@ const Admin = ({
     var history = useHistory();
     var [products, setProducts] = useState([]);
     var [token, setToken] = useState(localStorage.getItem('token'));
+    var [visible, setVisible] = useState(false);
     const { addToast } = useToasts()
 
     const url = window.$BASE_URL;
@@ -24,6 +25,7 @@ const Admin = ({
         })
         .then(function (response) {
             console.log(response);
+            setVisible(true)
             recargarVista();
         }).catch(function (error) {
             history.push('/');
@@ -106,7 +108,7 @@ const Admin = ({
     }
 
     return(
-        <Fragment style={{ display: token ? 'block' : 'none'   }}>
+        <Fragment>
             <MetaTags>
                 <title>aloeshop | admin</title>
                 <meta
@@ -115,7 +117,7 @@ const Admin = ({
                 />
             </MetaTags>
         <LayoutOne headerTop="hidden">
-            <div className="container">
+            <div className="container" style={{ display: visible ? 'block' : 'none' }}>
                 <div className="row">
                     <div className="col-12">
                     <h1 style={{color: 'black'}}>Área de Adminitración</h1>
