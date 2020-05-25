@@ -119,3 +119,7 @@ db.sqlite3
 
 # vscode
 .vscode
+
+# pro stuff
+pro_react.py
+testing.py
