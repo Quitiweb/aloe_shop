@@ -29,9 +29,11 @@ const LoginRegister = ({ location }) => {
       password: password
     }, )
     .then(function (response) {
-      console.log(response);
+      localStorage.setItem('username', username);
+      localStorage.setItem('token', 'Token ' + response.data.key);
+      history.push('/');
 
-      addToast('Tu cuenta ha sido creada con éxito, inicia sesión para continuar', 
+      addToast('¡Bienvenido, ' + username + '!', 
       { 
           appearance: 'info', 
           autoDismiss: true 
@@ -62,13 +64,8 @@ const LoginRegister = ({ location }) => {
       password2: password2,
       email: email
     }, )
-    .then(function (response) {
-      console.log(response);
-      localStorage.setItem('username', username);
-      localStorage.setItem('token', 'Token ' + response.data.key);
-      history.push('/');
-
-      addToast('¡Bienvenido, ' + username + '!', 
+    .then(function (response) {   
+      addToast('Tu cuenta ha sido creada con éxito, inicia sesión para continuar', 
       { 
           appearance: 'info', 
           autoDismiss: true 
@@ -77,7 +74,7 @@ const LoginRegister = ({ location }) => {
     })
     .catch(function (error) {
       console.log(error);
-      addToast('No se ha podido iniciar sesión con los datos introducidos', 
+      addToast('Ha ocurrido un error intentando crear tu cuenta', 
       { 
           appearance: 'error', 
           autoDismiss: true 
