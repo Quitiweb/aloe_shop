@@ -9,6 +9,7 @@ import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
+import { ToastProvider, useToasts } from 'react-toast-notifications'
 
 const LoginRegister = ({ location }) => {
 
@@ -17,6 +18,7 @@ const LoginRegister = ({ location }) => {
   const url = window.$BASE_URL;
 
   const { pathname } = location;
+  const { addToast } = useToasts()
 
   const submitLogin = () => {
     var username = document.getElementById('login-username').value;
@@ -31,9 +33,22 @@ const LoginRegister = ({ location }) => {
       localStorage.setItem('username', username);
       localStorage.setItem('token', 'Token ' + response.data.key);
       history.push('/');
+
+      addToast('¡Bienvenido, ' + username + '!', 
+      { 
+          appearance: 'info', 
+          autoDismiss: true 
+      }
+  )
     })
     .catch(function (error) {
       console.log(error);
+      addToast('No se ha podido iniciar sesión con los datos introducidos', 
+      { 
+          appearance: 'error', 
+          autoDismiss: true 
+      }
+  )
     });
 
   }

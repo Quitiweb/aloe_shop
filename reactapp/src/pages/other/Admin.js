@@ -4,6 +4,7 @@ import MetaTags from "react-meta-tags";
 import axios from 'axios';
 import { Redirect } from 'react-router-dom'
 import { useHistory } from "react-router-dom";
+import { ToastProvider, useToasts } from 'react-toast-notifications'
 
 const Admin = ({
 }) => {
@@ -11,6 +12,7 @@ const Admin = ({
     var history = useHistory();
     var [products, setProducts] = useState([]);
     var [token, setToken] = useState(localStorage.getItem('token'));
+    const { addToast } = useToasts()
 
     const url = window.$BASE_URL;
     
@@ -55,8 +57,6 @@ const Admin = ({
  
     var onClickButton = () => {
 
-        console.log(document.getElementById('form-image').files[0])
-
         let form_data = new FormData();
         form_data.append('sku', document.getElementById('form-sku').value)
         form_data.append('name', document.getElementById('form-nombre').value)
@@ -81,9 +81,21 @@ const Admin = ({
         })
           .then(function (response) {
             recargarVista();
-            console.log(response);
+            addToast('¡El producto ' + document.getElementById('form-nombre').value + ' se ha añadido con éxito!', 
+                    { 
+                        appearance: 'success', 
+                        autoDismiss: true 
+                    }
+                )
           })
           .catch(function (error) {
+            addToast('Ha ocurrido un error intentando añadir este producto', 
+                    { 
+                        appearance: 'error', 
+                        autoDismiss: true 
+                    }
+                )
+            
             console.log(error);
           });
     }

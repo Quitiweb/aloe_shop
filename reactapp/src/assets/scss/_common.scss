@@ -15,6 +15,14 @@
   box-sizing: border-box;
 }
 
+.react-toast-notifications__container {
+  position: fixed !important;
+  top: 75px;
+  right: 5px;
+  left: inherit !important;
+}
+
+
 html,
 body {
   height: 100%;

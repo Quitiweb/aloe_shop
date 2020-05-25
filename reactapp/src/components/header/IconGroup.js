@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import MenuCart from "./sub-components/MenuCart";
 import { deleteFromCart } from "../../redux/actions/cartActions";
 import { useHistory } from "react-router-dom";
+import { ToastProvider, useToasts } from 'react-toast-notifications'
 
 import axios from 'axios';
 
@@ -22,6 +23,7 @@ const IconGroup = ({
   const [token, setToken] = useState(localStorage.getItem('token'));
   const [username, setUsername] = useState('');
   const [admin, setAdmin] = useState('');
+  const { addToast } = useToasts()
 
   const url = window.$BASE_URL;
 
@@ -56,6 +58,12 @@ const IconGroup = ({
       setToken(null);
       history.push('/login-register');
       console.log(response);
+      addToast('Sesión cerrada correctamente', 
+          { 
+              appearance: 'success', 
+              autoDismiss: true 
+          }
+      )
     })
     .catch(function (error) {
       console.log(error);
