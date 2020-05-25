@@ -105,7 +105,7 @@ const IconGroup = ({
                 </li>
                 { admin ?
                   <li>
-                  <Link to={""} to={process.env.PUBLIC_URL + "/admin"}>
+                  <Link to={""} to={process.env.PUBLIC_URL + "/dashboard"}>
                     admin
                   </Link>
                   </li>

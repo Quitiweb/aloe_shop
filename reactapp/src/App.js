@@ -122,7 +122,7 @@ const App = props => {
                 />
 
                 <Route
-                  path={process.env.PUBLIC_URL + "/admin"}
+                  path={process.env.PUBLIC_URL + "/dashboard"}
                   component={Admin}
                 />
 
