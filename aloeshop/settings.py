@@ -71,6 +71,8 @@ CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',
     'http://localhost:8000',
     'http://localhost:8080',
+    'https://as.quitiweb.com',
+    'https://asa.quitiweb.com',
 )
 
 CORS_ORIGIN_ALLOW_ALL = True

@@ -25,7 +25,8 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(thunk, save()))
 );
 
-window.$BASE_URL = 'http://127.0.0.1:8000';
+// window.$BASE_URL = 'http://127.0.0.1:8000';
+window.$BASE_URL = 'https://asa.quitiweb.com';
 const url = window.$BASE_URL;
 
 // fetch products from json file
