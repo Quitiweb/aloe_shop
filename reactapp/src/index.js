@@ -49,8 +49,6 @@ axios.get( url + '/api')
     console.log(error);
   });
 
-
-  store.dispatch(fetchProducts(products));
 ReactDOM.render(
   <Provider store={store}>
     <App />
