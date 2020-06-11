@@ -52,6 +52,19 @@ const LoginRegister = ({ location }) => {
 
   }
 
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      if(e.target.id == 'login-password') {
+        submitLogin();
+      } else {
+        submitRegister();
+      }
+      
+    }
+  }
+  
+
   const submitRegister = () => {
     var username = document.getElementById('register-username').value;
     var password1 = document.getElementById('register-pwd1').value;
@@ -133,6 +146,7 @@ const LoginRegister = ({ location }) => {
                                 type="password"
                                 name="user-password"
                                 placeholder="Password"
+                                onKeyPress={handleKeyDown}
                               />
                               <div className="button-box">
                                 <div className="login-toggle-btn">
@@ -177,6 +191,7 @@ const LoginRegister = ({ location }) => {
                                 name="user-email"
                                 placeholder="Email"
                                 type="email"
+                                onKeyPress={handleKeyDown}
                               />
                               <div className="button-box">
                                 <button type="button" onClick={() => submitRegister()}>
