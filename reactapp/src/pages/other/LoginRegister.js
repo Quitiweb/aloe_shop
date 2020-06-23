@@ -20,9 +20,9 @@ const LoginRegister = ({ location }) => {
   const { pathname } = location;
   const { addToast } = useToasts()
 
-  const submitLogin = () => {
-    var username = document.getElementById('login-username').value;
-    var password = document.getElementById('login-password').value;
+  const submitLogin = (us, pw = null) => {
+    var username = us ? us : document.getElementById('login-username').value;
+    var password = pw ? pw : document.getElementById('login-password').value;
     
     axios.post(url + '/rest-auth/login/', {
       username: username,
@@ -43,11 +43,11 @@ const LoginRegister = ({ location }) => {
     .catch(function (error) {
       console.log(error);
       addToast('No se ha podido iniciar sesión con los datos introducidos', 
-      { 
-          appearance: 'error', 
-          autoDismiss: true 
-      }
-  )
+        { 
+            appearance: 'error', 
+            autoDismiss: true 
+        }
+    )
     });
 
   }
@@ -79,11 +79,13 @@ const LoginRegister = ({ location }) => {
     }, )
     .then(function (response) {   
       addToast('Tu cuenta ha sido creada con éxito, inicia sesión para continuar', 
-      { 
-          appearance: 'info', 
-          autoDismiss: true 
-      }
-  )
+        { 
+            appearance: 'info', 
+            autoDismiss: true 
+        }
+      )
+      submitLogin(username, password1);
+
     })
     .catch(function (error) {
       console.log(error);
