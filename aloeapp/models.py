@@ -22,3 +22,13 @@ class Producto(models.Model):
     def __str__(self):
         """A string representation of the model."""
         return self.name
+
+class CategoryTop(models.Model):
+    nombre = models.CharField(max_length=100)
+    activa = models.BooleanField(
+        default=False, blank=True, help_text="Ten activo solo uno al mismo tiempo"
+    )
+
+    def __str__(self):
+        """A string representation of the model."""
+        return self.name

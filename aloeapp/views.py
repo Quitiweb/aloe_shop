@@ -11,8 +11,8 @@ from rest_framework.authentication import SessionAuthentication, BasicAuthentica
 from rest_framework.permissions import IsAuthenticated
 
 
-from .models import Producto
-from .serializers import ProductoSerializer
+from .models import Producto, CategoryTop
+from .serializers import ProductoSerializer, CategorySerializer
 
 
 class ListProducto(generics.ListCreateAPIView):
@@ -22,6 +22,16 @@ class ListProducto(generics.ListCreateAPIView):
 
 
 class DetailProducto(generics.RetrieveUpdateDestroyAPIView):
+    queryset = CategoryTop.objects.all()
+    serializer_class = CategorySerializer
+
+
+class ListCategoria(generics.ListCreateAPIView):
+    queryset = CategoryTop.objects.all()
+    serializer_class = ProductoSerializer
+
+
+class DetailCategoria(generics.RetrieveUpdateDestroyAPIView):
     queryset = Producto.objects.all()
     serializer_class = ProductoSerializer
 

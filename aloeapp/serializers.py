@@ -1,5 +1,5 @@
 # aloeapp/serializers.py
-from .models import Producto
+from .models import Producto, CategoryTop
 from rest_framework import serializers
 from rest_framework_jwt.settings import api_settings
 from django.contrib.auth.models import User
@@ -8,6 +8,12 @@ from django.contrib.auth.models import User
 class ProductoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Producto
+        fields = "__all__"
+
+
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CategoryTop
         fields = "__all__"
 
 
