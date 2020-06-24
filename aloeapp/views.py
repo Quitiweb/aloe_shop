@@ -20,20 +20,24 @@ class ListProducto(generics.ListCreateAPIView):
     serializer_class = ProductoSerializer
 
 
-
 class DetailProducto(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Producto.objects.all()
+    serializer_class = ProductoSerializer
+
+
+class ListCategory(generics.ListCreateAPIView):
     queryset = CategoryTop.objects.all()
     serializer_class = CategorySerializer
 
 
-class ListCategoria(generics.ListCreateAPIView):
+class DetailCategory(generics.RetrieveUpdateDestroyAPIView):
     queryset = CategoryTop.objects.all()
-    serializer_class = ProductoSerializer
+    serializer_class = CategorySerializer
 
 
-class DetailCategoria(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Producto.objects.all()
-    serializer_class = ProductoSerializer
+class TopCategory(generics.ListCreateAPIView):
+    queryset = CategoryTop.objects.filter(activa=True)
+    serializer_class = CategorySerializer
 
 
 @api_view(['GET'])

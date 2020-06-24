@@ -32,8 +32,7 @@ const url = window.$BASE_URL;
 // fetch products from json file
 axios.get( url + '/api')
   .then(function (response) {
-    products = response.data
-    console.log(response.data);
+    products = response.data;
     products.map((producto)=>{  
         producto.id = producto.id.toString()
         producto.sku = producto.sku.toString()
@@ -41,9 +40,7 @@ axios.get( url + '/api')
         producto.category = [producto.category]
         producto.tag = [producto.tag]
     }); 
-    console.log(products)
-    store.dispatch(fetchProducts(products));
-    console.log(store)
+    store.dispatch(fetchProducts(products))
   })
   .catch(function (error) {
     console.log(error);

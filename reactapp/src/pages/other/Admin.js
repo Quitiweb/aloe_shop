@@ -11,10 +11,11 @@ const Admin = ({
 
     var history = useHistory();
     var [products, setProducts] = useState([]);
+    var [categories, setCategories] = useState([]);
     var [token, setToken] = useState(localStorage.getItem('token'));
     var [visible, setVisible] = useState(false);
-    const { addToast } = useToasts()
 
+    const { addToast } = useToasts()
     const url = window.$BASE_URL;
     
     useEffect(() => {
@@ -24,14 +25,29 @@ const Admin = ({
             }
         })
         .then(function (response) {
-            console.log(response);
             setVisible(true)
-            recargarVista();
+            recargarVista(); // Si el usuario es admin, ya cargamos tanto productos.
+            getCategories(); // Como categorias.
         }).catch(function (error) {
             history.push('/');
             console.log(error);
-        });   
+        });
     },[]) 
+
+
+    var getCategories = () => {
+        axios.get(url + '/api/categories', {
+            headers: {
+                Authorization: token
+            }
+        })
+        .then(function (response) {
+            console.log('CATEGORIAS' + response);
+            setCategories(response.data)
+        }).catch(function (error) {
+            console.log(error);
+        }); 
+    }
 
     var recargarVista = () => {
         axios.get(url + '/api', {
@@ -41,7 +57,6 @@ const Admin = ({
         })
         .then(function (response) {
           setProducts(response.data)
-          console.log(response.data);
           products.map((producto)=>{  
               producto.id = producto.id.toString()
               producto.sku = producto.sku.toString()
@@ -49,8 +64,6 @@ const Admin = ({
               producto.category = [producto.category]
               producto.tag = [producto.tag]
           }); 
-          console.log(products)
-          
         })
         .catch(function (error) {
           console.log(error);
@@ -58,7 +71,6 @@ const Admin = ({
     }
  
     var onClickButton = () => {
-
         let form_data = new FormData();
         form_data.append('sku', document.getElementById('form-sku').value)
         form_data.append('name', document.getElementById('form-nombre').value)
@@ -103,8 +115,84 @@ const Admin = ({
     }
 
     var onClickRow = (id) => {
-        
         history.push("/detalle/" + id);
+    }
+
+    var setTopCategory = (id, nombre) => {
+        for(let category of categories) {
+            let form_data = new FormData();
+            form_data.append('id', category.id) 
+            form_data.append('nombre', category.nombre) 
+            form_data.append('activa', false) 
+
+            axios.put(url + '/api/category/' + category.id + '/',form_data, {
+                headers: {
+                'accept': 'application/json',
+                'Accept-Language': 'en-US,en;q=0.8',
+                'Content-Type': 'multipart/form-data;'
+                }
+            })
+            .then(function (response) {   
+                let form_data = new FormData();
+                form_data.append('id', id) 
+                form_data.append('nombre', nombre) 
+                form_data.append('activa', true) 
+
+                axios.put(url + '/api/category/' + id + '/',form_data, {
+                    headers: {
+                    'accept': 'application/json',
+                    'Accept-Language': 'en-US,en;q=0.8',
+                    'Content-Type': 'multipart/form-data;'
+                    }
+                })
+                .then(function (response) {
+                    getCategories();
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            })
+            .catch(function (error) {
+                console.log(error);
+            });    
+        }
+
+        categoryToast();
+
+    }
+
+    var emptyTopCategory = (id, nombre) => {
+        for(let category of categories) {
+            let form_data = new FormData();
+            form_data.append('id', category.id) 
+            form_data.append('nombre', category.nombre) 
+            form_data.append('activa', false) 
+
+            axios.put(url + '/api/category/' + category.id + '/',form_data, {
+                headers: {
+                'accept': 'application/json',
+                'Accept-Language': 'en-US,en;q=0.8',
+                'Content-Type': 'multipart/form-data;'
+                }
+            })
+            .then(function (response) {   
+                getCategories();
+            })
+            .catch(function (error) {
+                console.log(error);
+            });    
+        }
+        categoryToast();
+    }
+
+
+    function categoryToast() {
+        return addToast('Categorías actualizadas con éxito', 
+        { 
+            appearance: 'success', 
+            autoDismiss: true 
+        }
+    )
     }
 
     return(
@@ -201,11 +289,43 @@ const Admin = ({
                         <button type="button" onClick={() => onClickButton()} className="btn-hover btn-admin mb-5">Añadir Producto</button>
                     </form>
 
-                </div>
+                    <div className="row mt-5 col-12">
+                    <div className="col-12 col-md-6 offset-sm-3">
+                        <h4>Listado de categorias</h4>
+                        <p>Solo podrás tener una categoría que se destaque en la página principal. Si quieres
+                            que no se destaque ninguna en especial, pulsa <a style={{ color: 'blue' }} onClick={ () => emptyTopCategory() }>aquí</a>.
+                        </p>
+                        <table className="table">
+                            <thead>
+                                <tr>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Categoría principal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {categories.map((category)=>{
+                                return (
+                                <tr key={category.id}>
+                                    <td>{category.nombre}</td>
+                                    <td>{category.activa ? 
+                                        <i class="fa fa-check fa-2x" aria-hidden="true" style={{ color: '#1b926c', cursor: 'pointer' }}></i> 
+                                        : 
+                                        <button onClick={() => setTopCategory(category.id, category.nombre)}>Hacer principal</button>
+                                        }
+                                    </td>
+                                </tr>                                 
+                                )
+                            })}
+                              
+                            </tbody>
+                        </table>
+                    </div>
 
-            </div>
-        </LayoutOne>
-        </Fragment>
+                </div>
+            </div> 
+        </div>
+    </LayoutOne>
+</Fragment>
     )
 }
 

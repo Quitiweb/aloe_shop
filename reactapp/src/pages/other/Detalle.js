@@ -29,8 +29,8 @@ const Detalle = (props) => {
 
     var onClickButton = () => {
 
-         let form_data = new FormData();
-         form_data.append('name', product.name) 
+        let form_data = new FormData();
+        form_data.append('name', product.name) 
         form_data.append('sku', document.getElementById('form-sku').value)
         form_data.append('price', document.getElementById('form-precio').value)
         form_data.append('discount', document.getElementById('form-descuento').value)

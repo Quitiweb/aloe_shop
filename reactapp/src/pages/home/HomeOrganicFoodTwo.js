@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import MetaTags from "react-meta-tags";
 import LayoutOne from "../../layouts/LayoutOne";
 import HeroSliderTwenty from "../../wrappers/hero-slider/HeroSliderTwenty";
@@ -8,8 +8,29 @@ import BlogFeaturedThree from "../../wrappers/blog-featured/BlogFeaturedThree";
 import CountDownFour from "../../wrappers/countdown/CountDownFour";
 import BannerSeventeen from "../../wrappers/banner/BannerSeventeen";
 import TabProductFive from "../../wrappers/product/TabProductFive";
+import axios from 'axios';
+
+const url = window.$BASE_URL;
 
 const HomeOrganicFoodTwo = () => {
+  var [categoryTop, setCategoryTop] = useState('');
+  var [token, setToken] = useState(localStorage.getItem('token'));
+
+  useEffect(() => {
+    axios.get(url + '/api/category-top', {
+      headers: {
+          Authorization: token
+      }
+  })
+  .then(function (response) {
+      console.log(response.data[0].nombre)
+      setCategoryTop(response.data[0].nombre)
+  }).catch(function (error) {
+      console.log(error);
+  }); 
+  }, []);
+
+
   return (
     <Fragment>
       <MetaTags>
@@ -38,7 +59,7 @@ const HomeOrganicFoodTwo = () => {
         <TabProductFive
           spaceTopClass="pt-95"
           spaceBottomClass="pb-70"
-          category="na"
+          category={ categoryTop }
         />
         {/* banner */}
         {/* <BannerSeventeen spaceTopClass="pt-95" /> */}
