@@ -49,6 +49,41 @@ const Admin = ({
         }); 
     }
 
+    var addCategory = () => {
+        let form_data = new FormData();
+        
+        var nombre = document.getElementById('catform-nombre').value;
+        
+        form_data.append('nombre', nombre)
+        
+        axios.post(url + '/api/categories/', form_data, {
+            headers: {
+            'accept': 'application/json',
+            }
+        })
+        .then(function (response) {
+            getCategories();
+            addToast('¡La categoria ' + document.getElementById('catform-nombre').value + ' se ha añadido con éxito!', 
+                    { 
+                        appearance: 'success', 
+                        autoDismiss: true 
+                    }
+                )
+        })
+        .catch(function (error) {
+            addToast('Ha ocurrido un error intentando añadir esta categoria', 
+                    { 
+                        appearance: 'error', 
+                        autoDismiss: true 
+                    }
+                )
+            
+            console.log(error);
+        });
+        
+    }
+
+
     var recargarVista = () => {
         axios.get(url + '/api', {
             headers: {
@@ -320,8 +355,17 @@ const Admin = ({
                             </tbody>
                         </table>
                     </div>
-
                 </div>
+                <div className="row col-12 ml-1">
+                    <div className="col-12 col-sm-6 offset-sm-3">
+                        <h4>Añadir una categoría nueva</h4>
+                        <div className="col-12 mt-2">
+                            <input type="text" placeholder="Nombre" id="catform-nombre"/>
+                        </div>
+
+                        <button onClick={() => addCategory()} className="btn-hover btn-admin mb-5 mt-3">Añadir categoría</button>
+                        </div>
+                    </div>
             </div> 
         </div>
     </LayoutOne>

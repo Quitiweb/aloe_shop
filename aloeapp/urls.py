@@ -11,7 +11,7 @@ urlpatterns = [
     path('current_user/', current_user),
     path('is_admin/', is_admin),
     path('users/', UserList.as_view()),
-    path('categories', views.ListCategory.as_view()),
+    path('categories/', views.ListCategory.as_view()),
     path('category/<int:pk>/', views.DetailCategory.as_view()),
-    path('category-top', views.TopCategory.as_view()),
+    path('category-top/', views.TopCategory.as_view()),
 ]
