@@ -20,7 +20,7 @@ const About = ({ location }) => {
         <title>Flone | About us</title>
         <meta
           name="description"
-          content="About page of flone react minimalist eCommerce template."
+          content="aloeshop"
         />
       </MetaTags>
       <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>

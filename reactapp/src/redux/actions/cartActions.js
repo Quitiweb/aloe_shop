@@ -13,7 +13,7 @@ export const addToCart = (
 ) => {
   return dispatch => {
     if (addToast) {
-      addToast("Added To Cart", { appearance: "success", autoDismiss: true });
+      // addToast("Added To Cart", { appearance: "success", autoDismiss: true });
     }
     dispatch({
       type: ADD_TO_CART,
@@ -38,10 +38,10 @@ export const addToCart = (
 export const decreaseQuantity = (item, addToast) => {
   return dispatch => {
     if (addToast) {
-      addToast("Item Decremented From Cart", {
-        appearance: "warning",
-        autoDismiss: true
-      });
+      // addToast("Item Decremented From Cart", {
+      //   appearance: "warning",
+      //   autoDismiss: true
+      // });
     }
     dispatch({ type: DECREASE_QUANTITY, payload: item });
   };

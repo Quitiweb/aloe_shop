@@ -33,10 +33,10 @@ const Cart = ({
   return (
     <Fragment>
       <MetaTags>
-        <title>Flone | Cart</title>
+        <title>aloeshop | Cart</title>
         <meta
           name="description"
-          content="Cart page of flone react minimalist eCommerce template."
+          content="Cart page of aloeshop."
         />
       </MetaTags>
 
@@ -61,10 +61,8 @@ const Cart = ({
                           <tr>
                             <th>Image</th>
                             <th>Product Name</th>
-                            <th>Unit Price</th>
-                            <th>Qty</th>
+                            <th>Quantity</th>
                             <th>Subtotal</th>
-                            <th>action</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -131,7 +129,7 @@ const Cart = ({
                                   )}
                                 </td>
 
-                                <td className="product-price-cart">
+                                {/* <td className="product-price-cart">
                                   {discountedPrice !== null ? (
                                     <Fragment>
                                       <span className="amount old">
@@ -149,7 +147,7 @@ const Cart = ({
                                         finalProductPrice}
                                     </span>
                                   )}
-                                </td>
+                                </td> */}
 
                                 <td className="product-quantity">
                                   <div className="cart-plus-minus">
@@ -203,7 +201,7 @@ const Cart = ({
                                       ).toFixed(2)}
                                 </td>
 
-                                <td className="product-remove">
+                                {/* <td className="product-remove">
                                   <button
                                     onClick={() =>
                                       deleteFromCart(cartItem, addToast)
@@ -211,7 +209,7 @@ const Cart = ({
                                   >
                                     <i className="fa fa-times"></i>
                                   </button>
-                                </td>
+                                </td> */}
                               </tr>
                             );
                           })}
